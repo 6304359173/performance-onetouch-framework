@@ -1,0 +1,26 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1783873007073,1420,Generate Token,200,OK,Users 1-1,text,true,,790,239,2,2,https://restful-booker.herokuapp.com/auth,1410,0,1132
+1783873007906,1061,Generate Token,200,OK,Users 1-2,text,true,,790,239,3,3,https://restful-booker.herokuapp.com/auth,1061,0,803
+1783873008556,1055,Create Booking,200,OK,Users 1-1,text,true,,967,386,3,3,https://restful-booker.herokuapp.com/booking,1055,0,794
+1783873008907,1038,Generate Token,200,OK,Users 1-3,text,true,,794,239,4,4,https://restful-booker.herokuapp.com/auth,1037,0,776
+1783873008969,1066,Create Booking,200,OK,Users 1-2,text,true,,967,386,4,4,https://restful-booker.herokuapp.com/booking,1065,0,798
+1783873009614,1058,Get Booking,200,OK,Users 1-1,text,true,,930,196,4,4,https://restful-booker.herokuapp.com/booking/3307,1058,0,801
+1783873010711,7,Debug Sampler,200,OK,Users 1-1,text,true,,349,0,4,4,null,0,0,0
+1783873009902,1083,Generate Token,200,OK,Users 1-4,text,true,,786,239,5,5,https://restful-booker.herokuapp.com/auth,1082,0,816
+1783873009948,1068,Create Booking,200,OK,Users 1-3,text,true,,959,386,5,5,https://restful-booker.herokuapp.com/booking,1068,0,801
+1783873010720,315,GraphQL Query,200,,Users 1-1,text,true,,14110,266,5,5,https://countries.trevorblades.com/,311,0,245
+1783873010037,1085,Get Booking,200,OK,Users 1-2,text,true,,930,196,4,4,https://restful-booker.herokuapp.com/booking/3311,1085,0,816
+1783873011123,0,Debug Sampler,200,OK,Users 1-2,text,true,,349,0,4,4,null,0,0,0
+1783873011124,79,GraphQL Query,200,,Users 1-2,text,true,,14110,266,4,4,https://countries.trevorblades.com/,75,0,30
+1783873010899,1104,Generate Token,200,OK,Users 1-5,text,true,,790,239,3,3,https://restful-booker.herokuapp.com/auth,1103,0,818
+1783873011017,1022,Get Booking,200,OK,Users 1-3,text,true,,934,196,3,3,https://restful-booker.herokuapp.com/booking/3320,1022,0,772
+1783873012041,0,Debug Sampler,200,OK,Users 1-3,text,true,,349,0,3,3,null,0,0,0
+1783873010986,1101,Create Booking,200,OK,Users 1-4,text,true,,963,386,3,3,https://restful-booker.herokuapp.com/booking,1100,0,832
+1783873012043,80,GraphQL Query,200,,Users 1-3,text,true,,14110,266,3,3,https://countries.trevorblades.com/,77,0,30
+1783873012007,1062,Create Booking,200,OK,Users 1-5,text,true,,967,386,2,2,https://restful-booker.herokuapp.com/booking,1060,0,797
+1783873012088,1039,Get Booking,200,OK,Users 1-4,text,true,,938,196,2,2,https://restful-booker.herokuapp.com/booking/3326,1038,0,789
+1783873013128,5,Debug Sampler,200,OK,Users 1-4,text,true,,349,0,2,2,null,0,0,0
+1783873013138,64,GraphQL Query,200,,Users 1-4,text,true,,14110,266,2,2,https://countries.trevorblades.com/,63,0,32
+1783873013071,1040,Get Booking,200,OK,Users 1-5,text,true,,930,196,1,1,https://restful-booker.herokuapp.com/booking/3334,1040,0,781
+1783873014112,0,Debug Sampler,200,OK,Users 1-5,text,true,,349,0,1,1,null,0,0,0
+1783873014113,75,GraphQL Query,200,,Users 1-5,text,true,,14110,266,1,1,https://countries.trevorblades.com/,74,0,26
