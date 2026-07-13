@@ -38,60 +38,17 @@ pipeline {
             }
         }
 
-        stage('Run JMeter') {
-            steps {
-                bat '''
-                echo =====================================
-                echo JAVA VERSION
-                echo =====================================
-                java -version
+       stage('Run JMeter Docker') {
+    steps {
+        bat '''
+        cd /d E:\\performance-onetouch-framework\\docker
 
-                echo.
-                echo =====================================
-                echo STARTING JMETER TEST
-                echo =====================================
+        docker compose down
 
-                call "%JMETER_HOME%\\bin\\jmeter.bat" ^
-                -n ^
-                -t "%PROJECT_HOME%\\jmeter\\testplans\\RestfulBooker.jmx" ^
-                -q "%PROJECT_HOME%\\config\\DEV.properties" ^
-                -l "%PROJECT_HOME%\\results\\results.jtl" ^
-                -e ^
-                -o "%PROJECT_HOME%\\reports"
-
-                echo.
-                echo =====================================
-                echo JMETER EXIT CODE = %ERRORLEVEL%
-                echo =====================================
-
-                if %ERRORLEVEL% NEQ 0 (
-                    echo JMeter execution failed.
-                    exit /b %ERRORLEVEL%
-                )
-
-                echo.
-                echo =====================================
-                echo VERIFYING RESULTS
-                echo =====================================
-
-                dir "%PROJECT_HOME%\\results"
-                dir "%PROJECT_HOME%\\reports"
-
-                if not exist "%PROJECT_HOME%\\results\\results.jtl" (
-                    echo ERROR: results.jtl was not generated.
-                    exit /b 1
-                )
-
-                if not exist "%PROJECT_HOME%\\reports\\index.html" (
-                    echo ERROR: HTML Report was not generated.
-                    exit /b 1
-                )
-
-                echo.
-                echo JMeter execution completed successfully.
-                '''
-            }
-        }
+        docker compose up --build
+        '''
+    }
+}
 
         stage('Publish HTML Report') {
             steps {
