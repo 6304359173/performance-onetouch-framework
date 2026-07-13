@@ -1,30 +1,11 @@
 services:
+  jmeter:
+    build:
+      context: .
 
-  influxdb:
-    image: influxdb:1.8
-    container_name: influxdb
-    restart: unless-stopped
-
-    ports:
-      - "8086:8086"
+    container_name: jmeter
 
     volumes:
-      - influxdb-data:/var/lib/influxdb
+      - ../:/tests
 
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    restart: unless-stopped
-
-    ports:
-      - "3000:3000"
-
-    depends_on:
-      - influxdb
-
-    volumes:
-      - grafana-data:/var/lib/grafana
-
-volumes:
-  influxdb-data:
-  grafana-data:
+    network_mode: host
