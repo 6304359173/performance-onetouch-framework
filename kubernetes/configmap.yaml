@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: jmeter-config
+  namespace: performance
+
+data:
+  DEV.properties: |
+    protocol=https
+    host=restful-booker.herokuapp.com
+    port=443

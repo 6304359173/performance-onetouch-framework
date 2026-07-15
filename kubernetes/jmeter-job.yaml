@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: jmeter-job
+  namespace: performance
+
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600
+
+  template:
+
+    metadata:
+      labels:
+        app: jmeter
+
+    spec:
+      restartPolicy: Never
+
+      containers:
+      - name: jmeter
+
+        image: sigh1234/docker-jmeter:1.0
+        imagePullPolicy: Always
+
+        volumeMounts:
+        - name: reports-storage
+          mountPath: /tests/results
+
+        - name: reports-storage
+          mountPath: /tests/reports
+
+      volumes:
+      - name: reports-storage
+        persistentVolumeClaim:
+          claimName: jmeter-reports-pvc

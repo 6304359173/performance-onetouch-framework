@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+
+metadata:
+  name: jmeter-reports-pvc
+  namespace: performance
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  resources:
+    requests:
+      storage: 1Gi
