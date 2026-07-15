@@ -14,7 +14,24 @@ pipeline {
                 bat 'docker start influxdb'
             }
         }
+	stage('Validate JMeter Scripts') {
+		steps {
+			bat '''
+			echo =====================================
+			echo Validating JMeter Test Plan...
+			echo =====================================
 
+			if not exist "%PROJECT_HOME%\\jmeter\\testplans\\RestfulBooker.jmx" (
+				echo ERROR: RestfulBooker.jmx not found.
+				exit /b 1
+			)
+
+			echo SUCCESS: JMeter Test Plan Found.
+
+			dir "%PROJECT_HOME%\\jmeter\\testplans"
+			'''
+		}
+	}
         stage('Clean Workspace') {
             steps {
                 bat '''
