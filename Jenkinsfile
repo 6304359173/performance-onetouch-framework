@@ -54,7 +54,21 @@ pipeline {
                 '''
             }
         }
+	stage('Verify Kubernetes') {
+		steps {
+			bat '''
+			echo =====================================
+			echo Verifying Kubernetes Cluster...
+			echo =====================================
 
+			kubectl cluster-info
+
+			kubectl get nodes
+
+			kubectl get namespaces
+			'''
+		}
+	}
        stage('Run JMeter Docker') {
     steps {
         bat '''
