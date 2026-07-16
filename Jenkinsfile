@@ -3,9 +3,10 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_HOME = 'E:\\performance-onetouch-framework'
-        JMETER_HOME  = 'C:\\Loadmagic\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3'
-    }
+    PROJECT_HOME = 'E:\\performance-onetouch-framework'
+    JMETER_HOME  = 'C:\\Loadmagic\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3'
+    KUBECONFIG   = 'C:\\Users\\LENOVO\\.kube\\config'
+	}
 
     stages {
 
@@ -55,18 +56,22 @@ pipeline {
             }
         }
 	stage('Verify Kubernetes') {
-		steps {
-			bat '''
-			echo =====================================
-			echo Verifying Kubernetes Cluster...
-			echo =====================================
+    steps {
+        bat '''
+        echo =====================================
+        echo Verifying Kubernetes
+        echo =====================================
 
-			kubectl cluster-info
+        echo USERNAME=%USERNAME%
+        echo USERPROFILE=%USERPROFILE%
+        echo KUBECONFIG=%KUBECONFIG%
 
-			kubectl get nodes
+        kubectl config current-context
 
-			kubectl get namespaces
-			'''
+        kubectl get nodes
+
+        kubectl get namespaces
+        '''
 		}
 	}
        stage('Run JMeter Docker') {
