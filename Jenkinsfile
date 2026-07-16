@@ -74,18 +74,34 @@ pipeline {
         '''
 		}
 	}
-       stage('Run JMeter Docker') {
+       stage('Build Docker Image') {
     steps {
         bat '''
+        echo =====================================
+        echo Building Docker Image
+        echo =====================================
+
+        cd /d E:\\performance-onetouch-framework\\docker
+
+        docker compose build
+        '''
+    }
+}
+    stage('Run Docker Container') {
+    steps {
+        bat '''
+        echo =====================================
+        echo Running Docker Container
+        echo =====================================
+
         cd /d E:\\performance-onetouch-framework\\docker
 
         docker compose down
 
-        docker compose up --build
+        docker compose up
         '''
     }
 }
-
         stage('Publish HTML Report') {
             steps {
                 publishHTML(target: [
