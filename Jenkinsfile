@@ -74,6 +74,20 @@ pipeline {
         '''
 		}
 	}
+	
+	stage('Delete Previous Kubernetes Job') {
+    steps {
+        bat '''
+        echo =====================================
+        echo Deleting Previous Kubernetes Job...
+        echo =====================================
+
+        kubectl delete job jmeter-job -n performance --ignore-not-found=true
+
+        timeout /t 5
+        '''
+    }
+}
        stage('Build Docker Image') {
     steps {
         bat '''
