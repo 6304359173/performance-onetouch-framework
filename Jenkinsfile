@@ -83,9 +83,8 @@ pipeline {
         echo =====================================
 
         kubectl delete job jmeter-job -n performance --ignore-not-found=true
-
-        timeout /t 5
         '''
+        sleep(time: 5, unit: 'SECONDS')
     }
 }
 	stage('Deploy Kubernetes Job') {
