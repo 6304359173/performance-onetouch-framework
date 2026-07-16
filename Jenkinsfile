@@ -88,7 +88,42 @@ pipeline {
         '''
     }
 }
-       stage('Build Docker Image') {
+	stage('Deploy Kubernetes Job') {
+    steps {
+        bat '''
+        echo =====================================
+        echo Deploying Kubernetes Job...
+        echo =====================================
+
+        kubectl apply -f E:\\performance-onetouch-framework\\kubernetes\\jmeter-job.yaml
+        '''
+    }
+}
+
+	stage('Wait for Kubernetes Job') {
+    steps {
+        bat '''
+        echo =====================================
+        echo Waiting for Job Completion...
+        echo =====================================
+
+        kubectl wait --for=condition=complete job/jmeter-job -n performance --timeout=300s
+        '''
+    }
+}
+
+	stage('Read Kubernetes Logs') {
+    steps {
+        bat '''
+        echo =====================================
+        echo Kubernetes Job Logs
+        echo =====================================
+
+        kubectl logs job/jmeter-job -n performance
+        '''
+    }
+}
+ stage('Build Docker Image') {
     steps {
         bat '''
         echo =====================================
